@@ -4,7 +4,9 @@ Clicking on the selected class opens a component with a form for editing, creati
 There is a possibility of registration and logging in. The application uses Firebase, Firestore Firebase.
 
 Password and login of registered test user:
+
 Login: test01@gmail.com
+
 Password: test01
 
 After clicking on the calendar icon, you can manually select the date.
