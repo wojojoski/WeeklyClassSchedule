@@ -7,12 +7,18 @@ import "../styles/style.css";
 import { FaCalendarAlt } from "react-icons/fa";
 
 const WeekSelector = ({ onWeekSelect, selectedWeek }) => {
-  const [selectedDate, setSelectedDate] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-  });
+  const [selectedDate, setSelectedDate] = useState(null);
   const [highlightedWeek, setHighlightedWeek] = useState([]);
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
+
+  useEffect(() => {
+    if (!selectedDate) {
+      setSelectedDate({
+        startDate: new Date(),
+        endDate: new Date(),
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (selectedWeek) {
@@ -27,12 +33,15 @@ const WeekSelector = ({ onWeekSelect, selectedWeek }) => {
 
   const getWeekRange = (date) => {
     const startOfWeek = new Date(date);
+    startOfWeek.setHours(0, 0, 0, 0);
     const day = startOfWeek.getDay();
+
     const diffToMonday = day === 0 ? -6 : 1 - day;
     startOfWeek.setDate(startOfWeek.getDate() + diffToMonday);
 
     const endOfWeek = new Date(startOfWeek);
     endOfWeek.setDate(startOfWeek.getDate() + 6);
+    endOfWeek.setHours(23, 59, 59, 999);
 
     const weekDates = Array.from({ length: 7 }, (_, i) => {
       const weekDate = new Date(startOfWeek);
@@ -68,8 +77,8 @@ const WeekSelector = ({ onWeekSelect, selectedWeek }) => {
       <div className="week-selector-container">
         <div className="selected-week">
           <h3>Selected week:</h3>
-          <p>From: {formatDate(selectedDate.startDate)}</p>
-          <p>To: {formatDate(selectedDate.endDate)}</p>
+          <p>From: {formatDate(selectedDate?.startDate)}</p>
+          <p>To: {formatDate(selectedDate?.endDate)}</p>
         </div>
 
         <div
@@ -85,15 +94,16 @@ const WeekSelector = ({ onWeekSelect, selectedWeek }) => {
             onClickDay={handleDateClick}
             onMouseLeave={() => setHighlightedWeek([])}
             onMouseEnter={handleMouseEnter}
-            value={selectedDate.startDate}
+            value={selectedDate?.startDate}
             tileClassName={({ date }) => {
               const isHighlighted = highlightedWeek.some(
                 (highlightedDate) =>
                   highlightedDate.toDateString() === date.toDateString()
               );
               const isSelected =
-                selectedDate.startDate.toDateString() === date.toDateString() ||
-                selectedDate.endDate.toDateString() === date.toDateString();
+                selectedDate?.startDate.toDateString() ===
+                  date.toDateString() ||
+                selectedDate?.endDate.toDateString() === date.toDateString();
 
               if (isSelected) {
                 return "selected";

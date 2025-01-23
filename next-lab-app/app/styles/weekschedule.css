@@ -1,10 +1,11 @@
 .week-schedule {
   min-height: calc(100vh - 200px);
-  padding: 20px;
+  padding: 10px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
+  overflow-x: hidden;
 }
 
 .calendar-grid {
@@ -13,6 +14,7 @@
   background: #fff;
   overflow-x: auto;
   min-height: 800px;
+  width: 100%;
 }
 
 .hours-column {
@@ -282,7 +284,6 @@
   color: #333;
 }
 
-/* Remove the old modal styles */
 .modal,
 .modal-content,
 .add-course-btn {
@@ -314,4 +315,58 @@
 .arrow-icon {
   margin: 0 40%;
   font-size: 30px;
+}
+
+@media (max-width: 1024px) {
+  .day-column {
+    min-width: 120px;
+  }
+
+  .week-navigation {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .week-navigation h3 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .day-column {
+    min-width: 100px;
+  }
+
+  .day-header {
+    padding: 4px;
+    font-size: 14px;
+  }
+
+  .course-block {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  .course-time {
+    font-size: 10px;
+  }
+
+  .week-navigation h3 {
+    font-size: 20px;
+  }
+
+  .nav-button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .course-form {
+    width: 90%;
+    margin: 10px;
+    padding: 15px;
+  }
 }
