@@ -1,0 +1,99 @@
+/* style.css */
+
+/* WeekSelector */
+.react-calendar__tile.highlighted {
+  background-color: #28b463;
+  color: white;
+  border-radius: 15px;
+}
+
+.react-calendar__tile.selected {
+  background-color: #28b463;
+  color: white;
+  border-radius: 15px;
+}
+
+.react-calendar__tile--weekend {
+  font-weight: bold;
+}
+
+.week-selector-container {
+  display: flex;
+  align-items: flex-start;
+}
+.selected-week {
+  flex: 1;
+}
+.calendar-icon {
+  flex: 5;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 50px;
+}
+
+.confirm-week {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: rgb(31 100 105);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* EventForm, DayColumn */
+
+.day-column {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.time-slots {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-slot {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.time-slot.available {
+  background-color: #f9f9f9;
+}
+
+.time-slot.occupied {
+  background-color: #28b463;
+  color: white;
+}
+
+.empty-slot {
+  color: #ccc;
+}
+
+.course-form input {
+  margin: 5px 0;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 5px 10px;
+  margin-top: 10px;
+  background-color: #28b463;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #239b56;
+}

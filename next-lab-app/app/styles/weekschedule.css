@@ -1,0 +1,317 @@
+.week-schedule {
+  min-height: calc(100vh - 200px);
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.calendar-grid {
+  display: flex;
+  border: 1px solid #ddd;
+  background: #fff;
+  overflow-x: auto;
+  min-height: 800px;
+}
+
+.hours-column {
+  width: 60px;
+  flex-shrink: 0;
+  border-right: 1px solid #ddd;
+  background: #f8f9fa;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+.corner-header {
+  height: 80.8px;
+  border-bottom: 1px solid #ddd;
+  background-color: white;
+}
+
+.hour-label {
+  height: 60px;
+  padding: 4px;
+  text-align: right;
+  border-bottom: 1px solid #eee;
+  font-size: 0.8em;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.days-grid {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.day-column {
+  flex: 1;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ddd;
+}
+
+.day-column:last-child {
+  border-right: none;
+}
+
+.day-header {
+  height: 60px;
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  background: #f8f9fa;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.hours-grid {
+  flex: 1;
+  display: grid;
+  grid-template-rows: repeat(24, 60px);
+  position: relative;
+  height: calc(24 * 60px);
+}
+
+.hour-cell {
+  border-bottom: 1px solid #eee;
+  height: 60px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hour-cell:hover {
+  background-color: #f5f5f5;
+}
+
+.course-block {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  color: white;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+  overflow: visible;
+  transition: all 0.2s ease-in-out;
+  z-index: 2;
+  min-height: 30px;
+}
+
+.course-block:hover {
+  transform: scale(1.02);
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.course-block.has-overlap {
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: inherit;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+.course-time {
+  font-size: 0.8em;
+  opacity: 0.9;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 4px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+}
+
+.add-course-btn {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-course-btn:hover {
+  background: #5c9cf5;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-rows: repeat(24, 60px);
+  position: relative;
+}
+
+.time-cell {
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.overlap-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.course-form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.course-form {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.color-palette {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.color-option {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.color-option:hover {
+  transform: scale(1.1);
+}
+
+.color-option.selected {
+  border: 2px solid #333;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.form-actions button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.save-btn {
+  background: #4285f4;
+  color: white;
+}
+
+.delete-btn {
+  background: #ea4335;
+  color: white;
+}
+
+.cancel-btn {
+  background: #f1f3f4;
+  color: #333;
+}
+
+/* Remove the old modal styles */
+.modal,
+.modal-content,
+.add-course-btn {
+  display: none;
+}
+
+.week-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  background: rgb(31 100 105);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+  background: #5c9cf5;
+}
+
+.arrow-icon {
+  margin: 0 40%;
+  font-size: 30px;
+}
